@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PostalInput from './components/PostalInput';
+import WeatherData from './components/WeatherData';
 import './App.css';
 
 function App() {
@@ -11,6 +12,11 @@ function App() {
                 weatherData={weatherData}
                 setWeatherData={setWeatherData}
             />
+            { weatherData && 
+                <WeatherData 
+                    weatherData={weatherData}
+                />
+            }
         </div>
     );
 }

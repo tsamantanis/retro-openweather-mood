@@ -4,10 +4,6 @@ import './PostalInput.css';
 function PostalInput({ weatherData, setWeatherData }) {
     const [postal, setPostal] = useState('')
 
-    console.log(postal.length === 5)
-    console.log(postal.match('/^\d+$/'))
-    console.log(!weatherData)
-    console.log('\n')
     if (postal.length === 5 && postal.match(/^\d+$/) && !weatherData) {
         fetchWeather()        
     }
@@ -17,8 +13,8 @@ function PostalInput({ weatherData, setWeatherData }) {
     const url = `https://api.openweathermap.org/data/2.5/weather?zip=${postal},us&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}&units=${units}`
         try {
             const res = await fetch(url)
-            console.log(res)
-            setWeatherData(res.json())
+            const json = await res.json()
+            setWeatherData(json)
         } catch (error) {
             setWeatherData(null)
             console.log(error.message)
