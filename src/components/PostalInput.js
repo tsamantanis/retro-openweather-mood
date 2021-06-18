@@ -10,19 +10,22 @@ function PostalInput({ weatherData, setWeatherData }) {
     }
 
     async function fetchWeather() {
-    const units = "metric"
-    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${postal},us&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}&units=${units}`
+        const units = "metric"
+        const url = `https://api.openweathermap.org/data/2.5/weather?zip=${postal},us&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}&units=${units}`
         try {
             const res = await fetch(url)
             const json = await res.json()
-            if (json.code !== "200") {
+            if (json.cod !== 200) {
                 setWeatherData(null)
                 setError(json.message)
             } 
-            else setWeatherData(json)
+            else {
+                setWeatherData(json)
+                setError('')
+            }
         } catch (error) {
             setWeatherData(null)
-            console.log(error.message)
+            setError(error.message)
         }
     }
     return (
