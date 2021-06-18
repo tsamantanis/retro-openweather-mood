@@ -1,5 +1,7 @@
 # Retro style OpenWeatherAPI weather display
 
+![Product Screen Shot](./Retro-Weather.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup
