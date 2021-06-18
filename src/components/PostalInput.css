@@ -22,3 +22,7 @@ form:focus, form:active {
     border: none;
     outline: none !important;
 }
+
+.error {
+    margin-top: 2rem;
+}

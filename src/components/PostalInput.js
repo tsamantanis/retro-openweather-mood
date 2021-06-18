@@ -3,6 +3,7 @@ import './PostalInput.css';
 
 function PostalInput({ weatherData, setWeatherData }) {
     const [postal, setPostal] = useState('')
+    const [error, setError] = useState('')
 
     if (postal.length === 5 && postal.match(/^\d+$/) && !weatherData) {
         fetchWeather()        
@@ -14,21 +15,28 @@ function PostalInput({ weatherData, setWeatherData }) {
         try {
             const res = await fetch(url)
             const json = await res.json()
-            setWeatherData(json)
+            if (json.code !== "200") {
+                setWeatherData(null)
+                setError(json.message)
+            } 
+            else setWeatherData(json)
         } catch (error) {
             setWeatherData(null)
             console.log(error.message)
         }
     }
     return (
+        <>
         <input 
-            placeholder="enter zip code"
+            placeholder="enter US zip code"
             type="text" 
             minLength="5" 
             maxLength="5" 
             value={ postal } 
-            onChange={ (e) => setPostal(e.target.value) }
+            onChange={ (e) => {setWeatherData(null); setPostal(e.target.value) }}
         />
+        { error !== '' && <span className="error">{ error }</span> }
+        </>
     );
 }
 
