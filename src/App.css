@@ -10,5 +10,5 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid blue;
+    background: #F9EFE4;
 }
