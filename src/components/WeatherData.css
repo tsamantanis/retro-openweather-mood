@@ -30,21 +30,9 @@ img {
     filter: brightness(0.4);
 }
 
-.weather-description {
-
-}
-
 .weather-details {
     display: flex;
     flex-direction: column;
     text-align: start;
     justify-content: center;
-}
-
-.date {
-
-}
-
-.city-name {
-
 }

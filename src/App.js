@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PostalInput from './components/PostalInput';
 import WeatherData from './components/WeatherData';
+import MoodInput from './components/MoodInput';
 import './App.css';
 
 function App() {
     const [weatherData, setWeatherData] = useState()
-    console.log(weatherData)
     return (
         <div className="App">
             <PostalInput
@@ -13,9 +13,12 @@ function App() {
                 setWeatherData={setWeatherData}
             />
             { weatherData && 
-                <WeatherData 
-                    weatherData={weatherData}
-                />
+                <>
+                    <WeatherData 
+                        weatherData={weatherData}
+                    />
+                    <MoodInput />
+                </>
             }
         </div>
     );
